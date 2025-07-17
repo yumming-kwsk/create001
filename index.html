@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>p5js Canvas</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
+    body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+
       overflow-x: hidden;
     }
 
@@ -17,11 +18,13 @@
     }
 
     canvas {
-  display: block;
+  display: block !important;
   width: 100vw !important;
-  max-width: none !important;
-  height: auto;
-  margin: 0 auto;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: none !important;
+  box-sizing: border-box !important;
 }
 
 /* PC だけ max-width で制限 */
