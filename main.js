@@ -40,9 +40,10 @@ function setup() {
   loadTimer = makeWindowTimer(18, 20);  
 }
 
-// function windowResized() {
-//   setup();  // 再セットアップでサイズ調整
-// }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight * 2);
+}
+
 
 let bars = [];
 let lastMouseMoveFrame = 0;
