@@ -21,16 +21,17 @@ let mailY = 0;  // メールの縦位置
 let speed = 1;  // 動くスピード
 let maxSlide = 80; // 下に行く最大距離
 
-let canvasW, canvasH;
-
 function setup() {
+  let canvasW, canvasH;
+
   if (windowWidth < 768) {
     canvasW = windowWidth;
-    canvasH = max(windowHeight * 1.8, 1400);
+    canvasH = windowHeight * 1.5; // スクロール対応
   } else {
     canvasW = 750;
     canvasH = 1400;
   }
+
   createCanvas(canvasW, canvasH);
   angleMode(DEGREES);
 
