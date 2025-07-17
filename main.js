@@ -1,3 +1,5 @@
+let sketch0;
+
 let col_1 = '#8793FF'; // パステルブルー（水色パーツ）
 let col_2 = '#E03E74'; // 濃いめピンク（赤み強めではっきり）
 let col_3 = '#1FCE9A'; // グリーン
@@ -556,3 +558,8 @@ function drawFolder(x, y,foldericon,folderCol) {
       endShape(CLOSE);
       pop();
     }
+
+
+    /* =================================================== */
+
+new p5(sketch0, "container0");
