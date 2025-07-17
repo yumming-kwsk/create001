@@ -1,4 +1,4 @@
-let sketch0;
+
 
 let col_1 = '#8793FF'; // パステルブルー（水色パーツ）
 let col_2 = '#E03E74'; // 濃いめピンク（赤み強めではっきり）
@@ -23,18 +23,13 @@ let mailY = 0;  // メールの縦位置
 let speed = 1;  // 動くスピード
 let maxSlide = 80; // 下に行く最大距離
 
+let canvas;
+
 function setup() {
-  let canvasW, canvasH;
+  let canvasW = windowWidth < 768 ? windowWidth : 750;
+  let canvasH = windowWidth < 768 ? windowHeight * 1.5 : 1400;
 
-  if (windowWidth < 768) {
-    canvasW = windowWidth;
-    canvasH = windowHeight * 1.5; // スクロール対応
-  } else {
-    canvasW = 750;
-    canvasH = 1400;
-  }
-
-  createCanvas(canvasW, canvasH);
+  canvas = createCanvas(canvasW, canvasH);
   angleMode(DEGREES);
 
 //タイマー＋カウントアニメ
@@ -43,7 +38,10 @@ function setup() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight * 2);
+  let canvasW = windowWidth < 768 ? windowWidth : 750;
+  let canvasH = windowWidth < 768 ? windowHeight * 1.5 : 1400;
+
+  resizeCanvas(canvasW, canvasH);
 }
 
 
@@ -562,4 +560,3 @@ function drawFolder(x, y,foldericon,folderCol) {
 
     /* =================================================== */
 
-new p5(sketch0, "container0");
