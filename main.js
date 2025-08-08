@@ -76,7 +76,7 @@ function draw() {
     } 
   }
 
-  let bs = width/10;
+  let bs = baseW/10;
 
   drawTwinkleStar(bs*5.4,50,20);
   drawTwinkleStar(bs*6.1,90,10);
