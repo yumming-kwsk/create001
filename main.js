@@ -7,6 +7,8 @@ let col_5 = '#C5A3E6'; // ふんわりラベンダー寄りの紫
 let isButtonHovered = false;
 let isColorAlt = false;
 
+let aspectRatio = 600 / 1600; // 0.375
+
 // ボタンの位置とサイズ（グローバルで記録）
 let btnGlobalX = 0;
 let btnGlobalY = 0;
@@ -23,7 +25,10 @@ let maxSlide = 80; // 下に行く最大距離
 
 
 function setup() {
-  createCanvas(600, 1600);
+  // createCanvas(600, 1600);
+  let w = windowWidth;       // 表示幅いっぱい
+  let h = w / aspectRatio;   // 比率から高さ計算
+  createCanvas(w, h);
   angleMode(DEGREES);
 
 //タイマー＋カウントアニメ
@@ -520,3 +525,9 @@ function drawFolder(x, y,foldericon,folderCol) {
       pop();
     }
 
+
+    function windowResized() {
+      let w = windowWidth;
+      let h = w / aspectRatio;
+      resizeCanvas(w, h);
+    }
