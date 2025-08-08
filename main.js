@@ -65,8 +65,8 @@ function draw() {
 
   background('#CDD2FF');
   let size = 40;
-  for (let r = 0; r < 1600/size; r++) {
-    for (let c = 0; c < 1600/size; c++) {
+  for (let r = 0; r < baseW/size; r++) {
+    for (let c = 0; c < baseH/size; c++) {
       let x = size*r;
       let y = size*c;
       noFill();
