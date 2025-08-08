@@ -63,7 +63,11 @@ let colorsB = {
 
 function draw() {
 
-  background('#CDD2FF');
+  //background('#CDD2FF');
+push();
+fill('#cdd2ff');
+rect(0,0,baseW,baseH);
+pop();
   let size = 40;
   for (let r = 0; r < baseW/size; r++) {
     for (let c = 0; c < baseH/size; c++) {
