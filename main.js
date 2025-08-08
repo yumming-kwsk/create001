@@ -1,5 +1,3 @@
-
-
 let col_1 = '#8793FF'; // パステルブルー（水色パーツ）
 let col_2 = '#E03E74'; // 濃いめピンク（赤み強めではっきり）
 let col_3 = '#1FCE9A'; // グリーン
@@ -23,25 +21,14 @@ let mailY = 0;  // メールの縦位置
 let speed = 1;  // 動くスピード
 let maxSlide = 80; // 下に行く最大距離
 
-let canvas;
 
 function setup() {
-  let canvasW = windowWidth < 768 ? windowWidth : 750;
-  let canvasH = windowWidth < 768 ? windowHeight * 1.5 : 1400;
-
-  canvas = createCanvas(canvasW, canvasH);
+  createCanvas(600, 1600);
   angleMode(DEGREES);
 
 //タイマー＋カウントアニメ
   errorTimer = makeWindowTimer(5, 20); 
   loadTimer = makeWindowTimer(18, 20);  
-}
-
-function windowResized() {
-  let canvasW = windowWidth < 768 ? windowWidth : 750;
-  let canvasH = windowWidth < 768 ? windowHeight * 1.5 : 1400;
-
-  resizeCanvas(canvasW, canvasH);
 }
 
 
@@ -68,8 +55,9 @@ let colorsB = {
 
 
 function draw() {
+
   background('#CDD2FF');
-  let size = 50;
+  let size = 40;
   for (let r = 0; r < width/size; r++) {
     for (let c = 0; c < height/size; c++) {
       let x = size*r;
@@ -81,47 +69,44 @@ function draw() {
     } 
   }
 
-  drawTwinkleStar(675,70,20);
-  drawTwinkleStar(705,110,10);
-  drawCloud(150,50,120,35);
-  drawCloud(40,80,160,50);
-  drawEarth(420,60);
+  let bs = width/10;
 
- 
-  drawWindow(80,120,400,340,'Hello World!',drawMv);
-  drawWindow(450,440,190,140,'Heart', drawHearts);  
-  drawCloud(600,570,130,35);
-  drawSmiley(675,690,80);
-  drawTwinkleStar(700,470,15);
-  drawTwinkleStar(270,520,25);
-  drawTwinkleStar(310,550,15);
-  drawwawa(85,520);
+  drawTwinkleStar(bs*5.4,50,20);
+  drawTwinkleStar(bs*6.1,90,10);
+  drawCloud(bs*2,50,120,35);
+  drawCloud(bs*0.6,80,160,50);
+
+  drawWindow(bs,120,360,320,'Hello World!',drawMv);
+  drawWindow(bs*6,415,190,140,'Heart', drawHearts);  
+  drawSmiley(bs*4.3,520,90);
+
+  drawwawa(bs*1.5,470);
   let errorCount = errorTimer();
   for (let i = 0; i < errorCount; i++) {
-    drawWindow(170 + i * 12, 600 + i * 12, 380, 120, 'Error', drawError);
+    drawWindow(bs*2.5 + i * 12, 600 + i * 12, 380, 120, 'Error', drawError);
   }
 
-  drawMail(580,120+mailY);   
+  drawMail(width-bs*1.4,140+mailY);   
 
+  drawFrame(bs*6,280,50+mailY,20+mailY/2);
+  
+  drawFolder(bs*3.6, 820, '★',col_5); 
+  
 
-  drawWindow(30,1105,415,90,'Loading...',drawLoad);
+  drawWindow(bs*0.77,960,500,280,'Music',drawMusic);
+
+  drawFrame(bs*6.6,800,60+mailY,90+mailY/2);
 
   
-  drawFolder(580, 300, '★',col_5); 
-  drawFrame(460,340,50+mailY,20+mailY/2);
+  drawWindow(bs*2.6,1330,415,90,'Loading...',drawLoad);
+  drawwawa(bs*1.3,1285);
 
+  drawCloud(bs*3.4,1520,150,45);
+  drawFolder(bs*7, 1488, '…',col_1);
+  drawTwinkleStar(width-bs,1245,20);
+  drawTwinkleStar(width-bs*0.6,1285,10);
 
-  drawWindow(220,790,500,280,'Music',drawMusic);
-
- 
-
-  drawFolder(600, 1250, '…',col_1); 
-  drawwawa(675,1100);
-
-  drawCloud(190,1285,150,45);
-  drawEarth(470,1285);
-  drawTwinkleStar(520,1135,20);
-  drawTwinkleStar(550,1175,10);
+  drawSmiley(bs*1.6,1520,100);
 
   drawMail(90,780+mailY);   
     // アニメーション制御
@@ -129,12 +114,7 @@ function draw() {
     if (mailY > maxSlide) {
       mailY = 0;  // 一瞬で戻る
     }
-   
-  drawSmiley(90,1285,100);
-
-  drawFrame(30,930,60+mailY,90+mailY/2);
  
-  
    
 }
 
@@ -211,9 +191,8 @@ function drawMv(w, h) {
   btnW = w / 2;
   btnH = 30;
 
-
   // ⭐ グローバル座標で記録しておく（この2行を drawWindow の中から渡す値に合わせる！）
-btnGlobalX = 80 + 10 + x;
+btnGlobalX = width/10 + 10 + x;
 btnGlobalY = 120 + 40 + y;
 
 
@@ -242,7 +221,6 @@ btnGlobalY = 120 + 40 + y;
 function mousePressed() {
   isAlt = !isAlt;  // クリックで切り替え
 }
-
 
 //エラー画面
 function drawError(w, h) {
@@ -346,7 +324,7 @@ function drawMusic(w, h) {
   stroke(33);
   rect(10, h - 20, w - 20, 5, 5);
   fill(col_1);
-  let mx = mouseX - 220 - 10; // translate(80) + 余白(10)
+  let mx = mouseX - width/10 - 10; // translate(80) + 余白(10)
   let x = constrain(mx, 0, w - 20);
   circle(x + 10, h - 18, 18); // +10して戻す
 }
@@ -357,7 +335,7 @@ function mouseMoved() {
   
 function touchMoved() {
   lastMouseMoveFrame = frameCount;
-  // return false;
+  return false;
 }
 
 //ハート(元図形)
@@ -374,7 +352,6 @@ function drawHeart(ox, oy, size) {
   vertex(x, y);
   }
   endShape(CLOSE);
-
   pop();
 }
 
@@ -396,7 +373,6 @@ function makeWindowTimer(max, speed) {
   };
 }
 
-
 //フォルダアイコン
 function drawFolder(x, y,foldericon,folderCol) {
   push();
@@ -417,12 +393,12 @@ function drawFolder(x, y,foldericon,folderCol) {
     pop();
  } 
 
-
  function drawwawa(x,y){
   push();
   translate(x,y-5);
   // strokeWeight(2);
-  stroke(33);
+  noFill()
+;  stroke(33);
   for (let i = 0; i < 5; i++) {
     let movec = map(sin(frameCount*2),-1,1,5,20);
     ellipse(0,i*movec+20,90,30);
@@ -449,20 +425,7 @@ function drawFolder(x, y,foldericon,folderCol) {
   pop();
  }
 
- function drawEarth(x,y){
-  push();
-   translate(x,y);
-   noFill();
-   stroke(33);
-   ellipse(0,0,160,90);
-   arc(0,-45,200,50,16,164);
-   arc(0,45,200,50,-164,-16);
-   ellipse(0,0,130,90);
-   ellipse(0,0,90,90);
-   ellipse(0,0,40,90);
-   line(-80,0,80,0);
-  pop();
- }
+
 
   // アステロイド曲線（菱形）
   function drawTwinkleStar(x, y, r) {
@@ -556,7 +519,4 @@ function drawFolder(x, y,foldericon,folderCol) {
       endShape(CLOSE);
       pop();
     }
-
-
-    /* =================================================== */
 
