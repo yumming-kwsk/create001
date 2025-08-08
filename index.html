@@ -6,22 +6,16 @@
   <title>Responsive Canvas</title>
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 横スクロール禁止 */
+}
 
-    body {
-      /* background: #CDD2FF; */
-      font-family: system-ui;
-    }
-
-    canvas {
-      display: block;
-      margin: 0 auto;
-      width: 100vw;
-      height: auto;
-    }
+canvas {
+  display: block;
+  width: 100%;
+  height: auto; /* 比率維持で拡縮 */
+}
 
 
   </style>
