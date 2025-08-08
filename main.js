@@ -342,7 +342,6 @@ function mouseMoved() {
   
 function touchMoved() {
   lastMouseMoveFrame = frameCount;
-  return false;
 }
 
 //ハート(元図形)
