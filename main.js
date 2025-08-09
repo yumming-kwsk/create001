@@ -109,15 +109,15 @@ pop();
   drawFrame(bs*6.6,800,60+mailY,90+mailY/2);
 
   
-  drawWindow(bs*2.6,1330,415,90,'Loading...',drawLoad);
-  drawwawa(bs*1.3,1285);
+  drawWindow(bs*2.6,1290,415,90,'Loading...',drawLoad);
+  drawwawa(bs*1.3,1300);
 
-  drawCloud(bs*3.4,1520,150,45);
-  drawFolder(bs*7, 1488, '…',col_1);
-  drawTwinkleStar(width-bs,1245,20);
-  drawTwinkleStar(width-bs*0.6,1285,10);
+  drawCloud(bs*3.4,1500,150,45);
+  drawFolder(bs*7, 1470, '…',col_1);
+  drawTwinkleStar(width-bs*1.5,1395,20);
+  drawTwinkleStar(width-bs,1430,10);
 
-  drawSmiley(bs*1.6,1520,100);
+  drawSmiley(bs*1.6,1500,100);
 
   drawMail(90,780+mailY);   
     // アニメーション制御
@@ -536,7 +536,10 @@ function drawFolder(x, y,foldericon,folderCol) {
     }
     
     function scaleCanvas() {
-      let scaleFactor = windowWidth / baseW; // 横幅に合わせる
-      cnv.style('width', windowWidth + 'px');
+      // スマホ幅なら全幅、PCなら最大600px
+      let displayWidth = min(windowWidth, 600);
+      let scaleFactor = displayWidth / baseW;
+    
+      cnv.style('width', displayWidth + 'px');
       cnv.style('height', (baseH * scaleFactor) + 'px');
     }
