@@ -101,7 +101,7 @@ pop();
 
   drawFrame(bs*6,280,50+mailY,20+mailY/2);
   
-  drawFolder(bs*3.6, 820, '★',col_5); 
+  drawFolder(bs*3.6, 820, '★',col_3); 
   
 
   drawWindow(bs*0.77,960,500,280,'Music',drawMusic);
